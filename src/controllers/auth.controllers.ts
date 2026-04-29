@@ -46,8 +46,8 @@ export const signup = async (req: Request, res: Response) => {
 		const token = user?.signToken();
 		res.cookie("jwt", token, {
 			httpOnly: true,
-			secure: process.env.NODE_ENV === "production",
-			sameSite: "strict",
+			secure: true,
+			sameSite: "none",
 			maxAge: 7 * 24 * 60 * 60 * 1000,
 		});
 
@@ -100,8 +100,8 @@ export const login = async (req: Request, res: Response) => {
 		const token = user.signToken();
 		res.cookie("jwt", token, {
 			httpOnly: true,
-			secure: process.env.NODE_ENV === "production",
-			sameSite: "strict",
+			secure: true,
+			sameSite: "none",
 			maxAge: 7 * 24 * 60 * 60 * 1000,
 		});
 
@@ -121,8 +121,8 @@ export const logout = async (req: Request, res: Response) => {
 	try {
 		res.clearCookie("jwt", {
 			httpOnly: true,
-			secure: process.env.NODE_ENV === "production",
-			sameSite: "strict",
+			secure: true,
+			sameSite: "none",
 		});
 		res.status(200).json({
 			success: true,

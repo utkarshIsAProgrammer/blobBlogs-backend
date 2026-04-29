@@ -12,7 +12,7 @@ const port = process.env.PORT || 5500;
 
 app.use(
 	cors({
-		origin: "http://localhost:5174",
+		origin: ["http://localhost:5174", "https://blob-blogs-frontend.vercel.app"],
 		credentials: true,
 	}),
 );
